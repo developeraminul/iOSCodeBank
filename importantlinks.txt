@@ -20,6 +20,7 @@ http://stackoverflow.com/questions/6228092/how-can-i-compute-a-sha-2-ideally-sha
 return nil;
 }
 
+//Replace CC_SHA1 with CC_SHA256 (or whichever you need), as well as CC_SHA1_DIGEST_LENGTH with CC_SHA256_DIGEST_LENGTH.
 // #==================###
 
 Setup App and launch icon : http://stackoverflow.com/questions/28170520/ios-how-to-set-app-icon-and-launch-images
