@@ -1,1 +1,9 @@
 SHA - 256 : http://stackoverflow.com/questions/16866001/generate-sha256-in-objective-c-os-x
+
+#import <CommonCrypto/CommonDigest.h>
+
++ (NSData *)doSha256:(NSData *)dataIn {
+    NSMutableData *macOut = [NSMutableData CC_SHA256_DIGEST_LENGTH];
+    CC_SHA256(dataIn.bytes, dataIn.length, macOut.mutableBytes);
+    return macOut;
+}
