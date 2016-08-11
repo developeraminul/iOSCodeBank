@@ -8,6 +8,18 @@ SHA - 256 : http://stackoverflow.com/questions/16866001/generate-sha256-in-objec
     return macOut;
 }
 
+or 
+http://stackoverflow.com/questions/6228092/how-can-i-compute-a-sha-2-ideally-sha-256-or-sha-512-hash-in-ios
+
++ (NSData *)sha1:(NSData *)data {
+    unsigned char hash[CC_SHA1_DIGEST_LENGTH];
+    if ( CC_SHA1([data bytes], [data length], hash) ) {
+        NSData *sha1 = [NSData dataWithBytes:hash length:CC_SHA1_DIGEST_LENGTH];        
+        return sha1;
+    }
+return nil;
+}
+
 // #==================###
 
 Setup App and launch icon : http://stackoverflow.com/questions/28170520/ios-how-to-set-app-icon-and-launch-images
