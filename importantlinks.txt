@@ -7,3 +7,8 @@ SHA - 256 : http://stackoverflow.com/questions/16866001/generate-sha256-in-objec
     CC_SHA256(dataIn.bytes, dataIn.length, macOut.mutableBytes);
     return macOut;
 }
+
+// #==================###
+
+Setup App and launch icon : http://stackoverflow.com/questions/28170520/ios-how-to-set-app-icon-and-launch-images
+
