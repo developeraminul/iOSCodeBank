@@ -25,3 +25,39 @@ return nil;
 
 Setup App and launch icon : http://stackoverflow.com/questions/28170520/ios-how-to-set-app-icon-and-launch-images
 
+// ### Build a url query string #####
+
+-(NSString*)urlEscape:(NSString *)stringToURLEncode {
+    CFStringRef encodedURL = CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                     (CFStringRef) stringToURLEncode,
+                                                                     NULL,
+                                                                     (CFStringRef)@"!@#$%&*'();:=+,/?[]",
+                                                                     kCFStringEncodingUTF8);
+    return (NSString *)CFBridgingRelease(encodedURL);
+}
+
+// Put a query string onto the end of a url
+-(NSString*)addQueryStringToUrl:(NSString *)url params:(NSDictionary *)params {
+    NSMutableString *urlWithQuerystring = [[NSMutableString alloc] initWithString:url];
+    // Convert the params into a query string
+    if (params) {
+        for(id key in params) {
+            NSString *sKey = [key description];
+            NSString *sVal = [[params objectForKey:key] description];
+            // Do we need to add ?k=v or &k=v ?
+            if ([urlWithQuerystring rangeOfString:@"?"].location==NSNotFound) {
+                [urlWithQuerystring appendFormat:@"?%@=%@", [self urlEscape:sKey], [self urlEscape:sVal]];
+            } else {
+                [urlWithQuerystring appendFormat:@"&%@=%@", [self urlEscape:sKey], [self urlEscape:sVal]];
+            }
+        }
+    }
+    return urlWithQuerystring;
+}
+
+// how to use 
+
+NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: @"jim", @"username", @"abc123", @"password", nil];
+    
+NSString *urlWithQuerystring = [self addQueryStringToUrl:@"https://myapp.com/login" params:params];
+NSLog(@"ULR is : %@",urlWithQuerystring);
