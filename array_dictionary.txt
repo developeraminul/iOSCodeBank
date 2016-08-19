@@ -1,0 +1,17 @@
+
+
+NSMutableArray *mutableArray;
+if(mutableArray == nil)
+{
+  NSLog(@"Not initialized yet");
+}
+mutableArray= [[NSMutableArray alloc] init];
+[mutableArray addObject:@"Test1"];
+[mutableArray addObject:@"Test2"];
+NSLog(@"Before : %@",mutableArray);
+[mutableArray removeAllObjects];
+if([mutableArray count] == 0)
+{
+  NSLog(@"Have no value");
+}
+NSLog(@"After : %@",mutableArray);
