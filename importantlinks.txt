@@ -61,3 +61,6 @@ NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: @"jim", @"use
     
 NSString *urlWithQuerystring = [self addQueryStringToUrl:@"https://myapp.com/login" params:params];
 NSLog(@"ULR is : %@",urlWithQuerystring);
+
+// Return Example from block
+http://stackoverflow.com/questions/11632780/method-bool-return-from-inside-block
